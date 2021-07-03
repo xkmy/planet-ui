@@ -1,19 +1,19 @@
 ### Introduction
 
-一个高效,轻量,便捷的 react ui 库,使用 react hooks + typescript 编写,已完成 10 多个组件的编写
+一个高效,轻量,便捷的 react ui 库,使用 react hooks + typescript ,现已完成 10 多个组件的编写
 
 ### Install
 
 > 使用 npm
 
 ```
-npm i planet-ui
+npm i @arrebol/planet-ui
 ```
 
 > 使用 yarn
 
 ```
-yarn add planet-ui
+yarn add @arrebol/planet-ui
 ```
 
 ### Usage
@@ -25,11 +25,10 @@ import React from 'react'
 import { Button } from 'planet-ui'
 import 'planet-ui/dist/planet-ui.css'
 
-class Page extends React.Component {
-  render() {
-    return <Button type='primary'>黄瓜ui</Button>
-  }
+const App = () =>{
+  return <Button type='primary'>Planet Ui</Button>
 }
+
 ```
 
 2 .按需引入

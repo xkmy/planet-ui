@@ -6,8 +6,6 @@ const autoprefixer = require('gulp-autoprefixer')
 const cssnano = require('gulp-cssnano')
 const size = require('gulp-filesize')
 
-const { name } = require('./package.json')
-
 const DIR = {
   less: path.resolve(__dirname, './components/**/*.less'),
   buildSrc: [path.resolve(__dirname, './components/**/*.less')],
@@ -44,14 +42,14 @@ gulp.task('buildCss', () => {
       })
     )
     .pipe(autoprefixer())
-    .pipe(concat(`${name}.css`))
+    .pipe(concat('planet-ui.css'))
     .pipe(size())
     .pipe(gulp.dest(DIR.dist))
     .pipe(size())
     .pipe(gulp.dest(DIR.dist))
 
     .pipe(cssnano())
-    .pipe(concat(`${name}.min.css`))
+    .pipe(concat('planet-ui.min.css'))
     .pipe(size())
     .pipe(gulp.dest(DIR.dist))
     .pipe(size())
