@@ -1,0 +1,125 @@
+.planet-button-hover(@color: @default-color, @lighten: 5%, @font-color: #fff) {
+  color: @font-color;
+  background-color: @color;
+  border: 1px solid @color;
+  // disabled 等状态下不加border
+  &:not(.planet-button-disabled):not(.planet-button-default):not(.planet-button-dashed):not(.planet-button-hollow) {
+    &:hover,
+    &:active,
+    &:focus {
+      border: 1px solid @color;
+      background-color: lighten(@color, @lighten);
+      color: lighten(@font-color, @lighten);
+    }
+  }
+  &.planet-button-default {
+    &:active,
+    &:focus {
+      border: 1px solid @primary-color;
+      color: lighten(@primary-color, @lighten);
+    }
+  }
+  &.planet-button-dashed {
+    border: 1px dashed @border-color;
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: lighten(@color, @lighten);
+      color: lighten(@font-color, @lighten);
+    }
+  }
+}
+
+.tag-hover(@color: @default-color, @lighten: 5%, @font-color: #fff) {
+  color: @font-color;
+  background-color: @color;
+  border: 1px solid @color;
+  &:not(.planet-tag-disabled):not(.planet-tag-default):not(.planet-tag-color) {
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: lighten(@color, @lighten);
+    }
+  }
+}
+
+.planet-button-hollow(@color, @lighten : 5%) {
+  color: @color;
+  background: transparent;
+  text-shadow: unset;
+
+  &:not(.planet-button-disabled) {
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: transparent;
+      border-color: lighten(@color, @lighten);
+      color: lighten(@color, @lighten);
+    }
+  }
+
+  &.planet-button-dashed {
+    border: 1px dashed @color;
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: transparent;
+      border: 1px dashed lighten(@color, @lighten);
+      color: lighten(@color, @lighten);
+    }
+  }
+}
+
+.tag-hollow(@color, @lighten : 5%) {
+    color: @color;
+    background: transparent;
+    
+    &:not(.planet-tag-disabled):not(.planet-tag-color) {
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: transparent;
+        border-color: lighten(@color, @lighten);
+        color: lighten(@color, @lighten);
+      }
+    }
+  }
+
+.flex-center(@justify: center, @align: center) {
+  display: flex;
+  justify-content: @justify;
+  align-items: @align;
+}
+
+.add-alert-style(@color: @default-color, @opacity: 10%) {
+  border-color: @color;
+  background-color: fade(@color, @opacity);
+}
+
+.clearfix() {
+  &::before,
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+    zoom: 1;
+  }
+}
+
+.set-progress-bar-bg(@primaryColor: @primary-color) {
+  background: repeating-linear-gradient(-45deg, @bg-color 25%, @primaryColor 0, @primaryColor 50%, @bg-color 0, @bg-color 75%, @primaryColor 0);
+  background-size: @planet-progress-bg-offset;
+}
+
+.ellipsis(@n: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  & when ( @n >= 2 ) {
+    display: -webkit-box;
+    -webkit-line-clamp: @n;
+    -webkit-box-orient: vertical;
+  }
+  & when ( @n = 1 ) {
+    white-space: nowrap;
+  }
+}

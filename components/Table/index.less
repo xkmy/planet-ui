@@ -1,0 +1,50 @@
+@import '../styles/variables.less';
+
+.planet-table {
+  &-origin-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: @border-radius;
+  }
+
+  &-bordered {
+    .planet-table-origin-table {
+      th,
+      td {
+        border: 1px solid @border-color;
+      }
+    }
+  }
+
+  &-thead {
+    tr > th {
+      background-color: @bg-color;
+      color: @font-color;
+    }
+  }
+
+  &-thead > tr > th,
+  &-tbody > tr > td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid @border-color;
+    transition: all @default-transition;
+  }
+
+  &-tbody > tr:hover > td {
+    background: @planet-table-row-hover-bg-color;
+  }
+
+  &-pagination {
+    text-align: right;
+    margin-top: 15px;
+
+    .planet-pagination {
+      display: inline-flex;
+    }
+  }
+
+  &-stripe > td {
+    background-color: @bg-color;
+  }
+}

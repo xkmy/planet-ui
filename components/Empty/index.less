@@ -1,0 +1,26 @@
+@import '../styles/variables.less';
+@import '../styles/mixins.less';
+
+.planet-empty {
+  .flex-center();
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  height: @planet-empty-height;
+  color: @font-color;
+
+  &-icon {
+    margin-bottom: @planet-empty-offset;
+    font-size: @planet-empty-icon-size;
+    height: @planet-empty-icon-height;
+    svg {
+      stroke-width: 1px;
+    }
+  }
+
+  &-description {
+    font-size: @font-size;
+    color: @font-color;
+    margin-bottom: @planet-empty-offset;
+  }
+}

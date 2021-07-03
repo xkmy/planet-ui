@@ -1,0 +1,6 @@
+import '../styles'
+import '../Pagination/style'
+import '../Spin/style'
+import '../Empty/style'
+import '../Checkbox/style'
+import './index.less'

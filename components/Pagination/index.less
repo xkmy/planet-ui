@@ -1,0 +1,126 @@
+@import '../styles/variables.less';
+@import '../styles/mixins.less';
+
+.planet-pagination {
+  display: flex;
+  align-items: center;
+  &-simple-pages {
+    margin: @pagination-simple-offset;
+    color: @font-color;
+  }
+  &-simple-page-index {
+    font-weight: bold;
+    color: @primary-color;
+  }
+
+  &-simple-page-separator {
+    margin: 0 5px;
+  }
+
+  &-show-total {
+    margin-right: 10px;
+    color: @font-color;
+  }
+
+  &-item {
+    cursor: pointer;
+    border-radius: @border-radius;
+    user-select: none;
+    min-width: @pagination-item-size-default;
+    height: @pagination-item-size-default;
+    text-align: center;
+    list-style: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    border: 1px solid @border-color;
+    background-color: #fff;
+    margin-right: @pagination-item-offset;
+    padding: @pagination-item-padding;
+    outline: 0;
+    transition: all @default-transition;
+    font-size: @font-size;
+
+    &.planet-pagination-item-large {
+      min-width: @pagination-item-size-large;
+      height: @pagination-item-size-large;
+    }
+
+    &.planet-pagination-item-small {
+      min-width: @pagination-item-size-small;
+      height: @pagination-item-size-small;
+    }
+
+    &-disabled {
+      cursor: not-allowed;
+      color: @disabled-font-color;
+    }
+
+    &:not(&-disabled):hover,
+    &-selected {
+      color: @primary-color;
+      border: 1px solid @primary-color;
+    }
+  }
+
+  &-next {
+    margin-right: 20px;
+  }
+
+  &-size-changer {
+    &.planet-select {
+      width: 110px;
+      margin: 10px 10px 10px 0;
+    }
+
+    .planet-input {
+      height: @pagination-item-size-default;
+    }
+
+    &-container {
+      .planet-select-option {
+        height: @pagination-item-size-default;
+        padding: 0 8px;
+        line-height: @pagination-item-size-default;
+      }
+
+      &-large {
+        .planet-select-option {
+          height: @pagination-item-size-large;
+          line-height: @pagination-item-size-large;
+        }
+      }
+      
+      &-small {
+        .planet-select-option {
+          height: @pagination-item-size-small;
+          line-height: @pagination-item-size-small;
+        }
+      }
+    }
+  }
+
+  &-default {
+    .planet-input {
+      height: @pagination-item-size-default;
+    }
+  }
+  &-large {
+    .planet-input {
+      height: @pagination-item-size-large;
+    }
+  }
+
+  &-small {
+    .planet-input {
+      height: @pagination-item-size-small;
+    }
+  }
+
+  &-quick-jumper {
+    &.planet-input {
+      margin: 0 10px;
+    }
+  }
+}

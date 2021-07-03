@@ -1,0 +1,153 @@
+@import '../styles/style.less';
+
+.planet-button {
+  display: inline-block;
+  margin: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  line-height: 1.5;
+  padding: @button-default-padding;
+  font-size: @button-default-font-size;
+  height: @button-default-height;
+  user-select: none;
+  transition: all @default-transition;
+  position: relative;
+  color: @font-color;
+  background-color: #fff;
+  border-color: @border-color;
+  border-radius: @border-radius;
+  outline: none;
+  text-shadow: @default-text-shadow;
+  .planet-button-hover(@default-color);
+  &.planet-button-primary {
+    .planet-button-hover(@primary-color);
+    &.planet-button-hollow {
+      .planet-button-hollow(@primary-color)
+    }
+  }
+  &.planet-button-default {
+    color: @font-color;
+    background-color: #fff;
+    border: 1px solid @default-color;
+    text-shadow: none;
+    &:not(.planet-button-disabled):not(.planet-button-loading) {
+      &:hover,
+      &:active {
+        border: 1px solid @primary-color;
+        color: @primary-color;
+      }
+    }
+    &.planet-button-hollow {
+      .planet-button-hollow(@default-color)
+    }
+  }
+  &.planet-button-warning {
+    .planet-button-hover(@warning-color);
+    &.planet-button-hollow {
+      .planet-button-hollow(@warning-color)
+    }
+  }
+  &.planet-button-error {
+    .planet-button-hover(@error-color);
+    &.planet-button-hollow {
+      .planet-button-hollow(@error-color)
+    }
+  }
+  &.planet-button-success {
+    .planet-button-hover(@success-color);
+    &.planet-button-hollow {
+      .planet-button-hollow(@success-color)
+    }
+  }
+  &.planet-button-info {
+    .planet-button-hover(@info-color);
+    &.planet-button-hollow {
+      .planet-button-hollow(@info-color)
+    }
+  }
+  &.planet-button-disabled {
+    cursor: not-allowed;
+    opacity: @button-disabled-opacity;
+    &.planet-button-hollow {
+      background-color: transparent !important;
+    }
+    &.planet-button-normal {
+      .planet-button-hover(@disabled-color);
+      text-shadow: none;
+      border: 1px solid @border-color;
+      color: @disabled-font-color  !important;
+      opacity: 1;
+      &.planet-button-hollow {
+        color: @disabled-font-color;
+      }
+    }
+  }
+  &.planet-button-block {
+    width: 100%;
+    display: block;
+  }
+  &.planet-button-loading {
+    opacity: @loading-opacity;
+    cursor: not-allowed;
+    >.planet-loading {
+      display: inline-block;
+      vertical-align: middle;
+      margin: -3px 8px 0 0;
+      animation: planet-spin @loading-time linear infinite;
+    }
+  }
+  &.planet-button-size-large {
+    font-size: @button-large-font-size;
+    padding: @button-large-padding;
+    height: @button-large-height;
+  }
+  &.planet-button-size-small {
+    font-size: @button-small-font-size;
+    padding: @button-small-padding;
+    height: @button-small-height;
+  }
+  &.planet-button-circle {
+    width: @button-default-width;
+    height: @button-default-height;
+    border-radius: 50%;
+    padding: 0;
+    box-shadow: @default-section-shadow;
+    &.planet-button-large {
+      width: @button-large-width;
+      height: @button-large-height;
+    }
+    &.planet-button-small {
+      width: @button-small-width;
+      height: @button-small-height;
+    }
+    
+    &.planet-button-loading {
+      position: relative;
+      &:before {
+        content: " ";
+        width: @button-default-width + 8px;
+        height: @button-default-width + 8px;
+        position: absolute;
+        border: 1px solid @primary-color;
+        border-radius: 50%;
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+        animation: planet-spin @loading-time @animate-type-easy-in-out infinite;
+        left: -5px;
+        top: -5px;
+      }
+    }
+  }
+  &-link {
+    cursor: pointer;
+    &.planet-button-link-disabled {
+      cursor: not-allowed;
+      color: @disabled-font-color;
+    }
+  }
+}

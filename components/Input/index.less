@@ -1,0 +1,196 @@
+@import '../styles/style.less';
+
+.planet-input {
+  font-variant: tabular-nums;
+  box-sizing: border-box;
+  margin: 0;
+  list-style: none;
+  position: relative;
+  display: inline-block;
+  padding: @input-padding;
+  height: @input-height;
+  font-size: @font-size;
+  line-height: 1.5;
+  color: @font-color;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid @border-color;
+  border-radius: @border-radius;
+  transition: all @animate-time;
+  outline: none;
+  width: 100%;
+
+  &::-webkit-input-placeholder {
+    color: @placeholder-color;
+  }
+
+  &::-moz-placeholder {
+    color: #999;
+  }
+
+  &::-ms-input-placeholder {
+    color: @placeholder-color;
+  }
+
+  &:active,
+  &:hover,
+  &:focus {
+    border-color: @primary-color;
+    outline: none;
+    box-shadow: @input-box-shadow;
+  }
+
+  &-large {
+    height: @input-height-large;
+  }
+
+  &-small {
+    height: @input-height-small;
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+    color: @disabled-font-color;
+    background-color: @disabled-color;
+    &:active,
+    &:hover,
+    &:focus {
+      border-color: @border-color;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  &-group-addon-before {
+    > .planet-input {
+      border-bottom-right-radius: @border-radius !important;
+      border-top-right-radius: @border-radius !important;
+    }
+  }
+
+  &-group-addon-after {
+    > .planet-input {
+      border-bottom-left-radius: @border-radius !important;
+      border-top-left-radius: @border-radius !important;
+    }
+  }
+
+  &-group-addon-all {
+    > .planet-input {
+      border-radius: 0 !important;
+    }
+  }
+
+  &-group {
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+
+    &-small {
+      .planet-input-group-addon {
+        height: @input-height-small;
+      }
+    }
+
+    &-large {
+      .planet-input-group-addon {
+        height: @input-height-large;
+      }
+    }
+
+    > .planet-input {
+      flex: 1 1 auto;
+      width: 100%;
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    &-addon {
+      font-size: @font-size;
+      font-weight: normal;
+      height: @input-height;
+      color: rgba(0, 0, 0, 0.65);
+      background-color: @bg-color;
+      border: 1px solid @border-color;
+      border-radius: @border-radius;
+      position: relative;
+      transition: all @loading-time;
+      box-sizing: border-box;
+
+      .flex-center();
+
+      &:first-child {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        border-right: none;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        border-left: none;
+      }
+    }
+  }
+
+  &-wrapper {
+    position: relative;
+    display: inline-block;
+
+    .planet-input-clear {
+      opacity: 0.5;
+      transition: @default-transition;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    &.planet-input-has-prefix {
+      .planet-input {
+        padding-left: @input-prefix-offset + 20px;
+      }
+    }
+
+    &.planet-input-has-suffix {
+      .planet-input {
+        padding-right: @input-prefix-offset + 20px;
+      }
+    }
+  }
+
+  &-prefix,
+  &-suffix {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    .flex-center();
+    cursor: pointer;
+    &,
+    svg {
+      color: @disabled-font-color;
+      font-size: 16px;
+    }
+  }
+
+  &-prefix {
+    left: @input-prefix-offset;
+  }
+
+  &-suffix {
+    right: @input-suffix-offset;
+  }
+
+  &-clear {
+    animation: planet-zoom-in @default-transition forwards;
+    color: @font-color !important;
+  }
+
+  &-password {
+    &-suffix {
+      svg {
+        color: @font-color;
+      }
+    }
+  }
+}

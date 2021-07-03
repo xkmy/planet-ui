@@ -1,0 +1,108 @@
+@import '../styles/style.less';
+
+.planet-switch {
+  display: inline-block;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all @animate-time @animate-type;
+  user-select: none;
+  vertical-align: middle;
+  border-radius: @planet-switch-width;
+  position: relative;
+  font-size: @font-size;
+  color: @font-color;
+  height: @planet-switch-height;
+  line-height: @planet-switch-height;
+  min-width: @planet-switch-width;
+  background-color: @planet-switch-bg-color;
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    width: @planet-switch-circle-width;
+    height: @planet-switch-circle-width;
+    border-radius: 50%;
+    background-color: #fff;
+    left: @planet-switch-offset;
+    // 进行除法运算时需要用 () 包裹
+    top: ((@planet-switch-height - @planet-switch-circle-width) / 2);
+    box-shadow: @default-shadow;
+    transition: all @animate-time @animate-type;
+  }
+
+  &-loading {
+    &-icon {
+      position: absolute;
+      display: flex;
+      vertical-align: middle;
+      left: @planet-switch-offset + 2px;
+      top: ((@planet-switch-height - @planet-switch-circle-width) / 2) + 2px;
+      color: @disabled-font-color;
+      z-index: 1;
+      animation: planet-spin @loading-time linear infinite;
+    }
+  }
+
+  &.planet-switch-checked {
+    background-color: @primary-color;
+
+    &::after {
+      left: 100%;
+      margin-left: -@planet-switch-offset;
+      transform: translate3d(-100%, 0, 0);
+    }
+
+    .planet-switch-inner {
+      margin-left: 6px;
+    }
+
+    .planet-switch-loading {
+      &-icon {
+        left: 100%;
+        opacity: 0.8;
+        color: @primary-color;
+        margin-left: -(@planet-switch-circle-width);
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+  }
+
+  &-inner {
+    color: #fff;
+    font-size: @font-size - 2px;
+    margin-left: 24px;
+  }
+
+  &.planet-switch-disabled,
+  &.planet-switch-loading {
+    cursor: not-allowed;
+    background-color: fade(@planet-switch-bg-color, 10%);
+
+    &.planet-switch-checked {
+      background-color: fade(@primary-color, 40%);
+    }
+  }
+
+  &.planet-switch-small {
+    height: @planet-switch-height-small;
+    min-width: @planet-switch-width-small;
+    line-height: @planet-switch-height-small;
+
+    &::after {
+      width: @planet-switch-circle-width-small;
+      height: @planet-switch-circle-width-small;
+    }
+  }
+
+  &.planet-switch-large {
+    height: @planet-switch-height-large;
+    min-width: @planet-switch-width-large;
+    line-height: @planet-switch-height-large;
+    border-radius: @planet-switch-circle-width-large * 3;
+
+    &::after {
+      width: @planet-switch-circle-width-large;
+      height: @planet-switch-circle-width-large;
+    }
+  }
+}

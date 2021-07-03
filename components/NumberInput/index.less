@@ -1,0 +1,100 @@
+@import '../styles/style.less';
+
+.planet-number-input {
+  width: @planet-number-input-width;
+  &.planet-input-small {
+    width: @planet-number-input-width-small;
+  }
+
+  &.planet-input-large {
+    width: @planet-number-input-width-large;
+  }
+
+  &-group {
+    display: inline-flex;
+    
+    .planet-input {
+      width: @planet-number-input-width;
+    }
+
+    .planet-input-group-addon {
+      cursor: pointer;
+    }
+
+    &.planet-input-group-small {
+      .planet-input-group-addon {
+        padding: 4px;
+      }
+    }
+
+    &.planet-input-group-large {
+      .planet-input-group-addon {
+        padding: 4px 15px;
+      }
+    }
+  }
+
+  &-wrapper {
+    display: inline-block;
+  }
+
+  &-stepper {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color @default-transition;
+    font-size: 20px;
+    outline: none;
+    height: 100%;
+    padding: @input-padding;
+
+    &:not(.planet-number-input-disabled):hover {
+      color: @primary-color;
+    }
+
+    &.planet-number-input-disabled {
+      cursor: not-allowed;
+      color: @disabled-font-color;
+      border-color: @border-color;
+    }
+
+    .planet-number-input-stepper-disabled {
+      cursor: not-allowed;
+      color: @disabled-font-color;
+      border-color: @border-color;
+      outline: none;
+    }
+  }
+
+  &-disabled-subtract {
+    .planet-input-group-addon:first-child {
+      cursor: not-allowed;
+      color: @disabled-font-color;
+      border-color: @border-color;
+      background-color: @disabled-color;
+    }
+  }
+
+  &-disabled-add {
+    .planet-input-group-addon:last-child {
+      cursor: not-allowed;
+      color: @disabled-font-color;
+      border-color: @border-color;
+      background-color: @disabled-color;
+    }
+  }
+
+  &-group-disabled {
+    .planet-input-group-addon {
+      background-color: @disabled-color;
+      color: @disabled-font-color;
+      cursor: not-allowed;
+    }
+    .planet-number-input-stepper {
+      cursor: not-allowed;
+      &:hover {
+        color: @disabled-font-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,347 @@
+@primary-color: #5a7ef7;
+@warning-color: #fca130;
+@error-color: #f93e3e;
+@success-color: #73d13d;
+@info-color: #5a7ef7;
+@bg-color: #fafafa;
+@border-color: #e8e8e8;
+@label-color: #333;
+@default-color: #d9d9d9;
+@loading-color: #61affe;
+@font-color: rgba(0, 0, 0, 0.65);
+@placeholder-color: rgba(0, 0, 0, 0.3);
+@disabled-color: #f5f5f5;
+@disabled-font-color: fade(@font-color, 25%);
+@font-size: 14px;
+@font-size-small: 12px;
+@font-size-large: 16px;
+@border-radius: 4px;
+@default-shadow: 0 4px 22px 0 rgba(15, 35, 95, 0.12);
+@default-section-shadow: 0 1px 4px 0 rgba(15, 35, 95, 0.12);
+@default-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+@picker-offset-top: 5px;
+@mask-bg-color: rgba(0, 0, 0, 0.5);
+
+// 响应式断点
+@media-screen-xs-max: 576px;
+@mobile: ~'screen and (max-width: @{media-screen-xs-max})';
+
+//动画时间
+@loading-time: 1.5s;
+@loading-opacity: 0.7;
+@animate-time: 0.5s;
+@animate-type: cubic-bezier(0.165, 0.84, 0.44, 1);
+@animate-type-easy-in-out: cubic-bezier(0.9, 0.25, 0.08, 0.83);
+@default-transition: @animate-time @animate-type;
+
+//Button 按钮
+@button-default-width: 40px;
+@button-default-height: 32px;
+@button-small-width: 30px;
+@button-small-height: 28px;
+@button-large-width: 50px;
+@button-large-height: 42px;
+@button-default-font-size: @font-size;
+@button-large-font-size: 16px;
+@button-small-font-size: 12px;
+@button-small-padding: 0 10px;
+@button-large-padding: 0 40px;
+@button-default-padding: 0 30px;
+@button-box-shadow: 0 2px 0 rgba(15, 35, 95, 0.02);
+@button-disabled-opacity: 0.6;
+
+//Input 输入框
+@input-height: 32px;
+@input-height-large: 40px;
+@input-height-small: 28px;
+@input-padding: 4px 10px;
+@input-box-shadow: 0 0 0 2px fade(@primary-color, 20%);
+@input-box-shadow-error: 0 0 0 2px fade(@error-color, 20%);
+@input-prefix-offset: 12px;
+@input-suffix-offset: 12px;
+
+//Grid
+@max-col-length: 24;
+@max-row-width: 100%;
+
+//message 消息提示
+@message-show-time: @animate-time;
+@message-theme-dark-bg: @mask-bg-color;
+@message-theme-light-bg: #fff;
+@message-theme-dark-font-color: #fff;
+@message-z-index: 999;
+@message-width: 300px;
+@message-height: 180px;
+@message-width-sm: 200px;
+@message-padding: 12px 25px;
+@message-title-size: 24px;
+@message-title-size-sm: 16px;
+@message-icon-font-size: 45px;
+@message-icon-font-size-sm: 25px;
+
+//notification 消息提示
+@notification-show-time: @animate-time;
+@notification-theme-dark-bg: @mask-bg-color;
+@notification-theme-light-bg: #fff;
+@notification-theme-dark-font-color: #fff;
+@notification-z-index: 999;
+@notification-width: 400px;
+@notification-height: 100px;
+@notification-width-sm: 200px;
+@notification-padding: 22px 20px;
+@notification-title-size: 16px;
+@notification-title-size-sm: 16px;
+@notification-icon-font-size: 30px;
+@notification-icon-font-size-sm: 25px;
+@notification-offset-right: 20px;
+@notification-offset-top: 20px;
+@notification-margin-bottom: 16px;
+
+//Tooltip 文字提示
+@tooltip-bg-color: #444;
+@tooltip-font-color: #fff;
+@tooltip-padding: 5px 15px;
+@tooltip-triangle-width: 10px; //三角形
+@tooltip-offset-y: 15px;
+@tooltip-offset-x: 15px;
+@tooltip-wrapper-z-index: 99;
+@tooltip-dark-bg-color: @tooltip-bg-color;
+@tooltip-light-bg-color: #fff;
+
+//Popover 文字框
+@popover-bg-color: #fff;
+@popover-padding: 0;
+@popover-wrapper-z-index: 99;
+@planet-popover-content-padding: 12px 16px;
+@planet-popover-content-width: 180px;
+@planet-popover-title-height: 30px;
+
+//Popconfirm 气泡确认框
+@planet-popconfirm-wrapper-z-index: 99;
+@planet-popconfirm-wrapper-padding: 12px 20px;
+@planet-popconfirm-offset: 12px;
+
+//Pagination 分页器
+@pagination-simple-offset: 0 15px;
+@pagination-item-offset: 8px;
+@pagination-item-padding: 0 8px;
+@pagination-item-size-default: 32px;
+@pagination-item-size-large: 40px;
+@pagination-item-size-small: 28px;
+
+//Alert 警告提示
+@alert-padding: 8px 15px;
+@alert-message-font-size: @font-size + 2px;
+@alert-message-margin: 0 0 8px 0;
+@alert-icon-margin: 0 5px 0 0;
+
+//Modal 对话框
+@modal-bg-color: #fff;
+@modal-z-index: 999;
+@modal-padding: 20px;
+@modal-header-height: 40px;
+@modal-footer-padding: 15px 20px;
+@modal-title-font-size: 16px;
+@modal-header-padding: 5px 10px;
+@modal-close-font-size: 20px;
+@modal-close-font-color: fade(@font-color, 45%);
+@modal-mask-color: @mask-bg-color;
+@modal-offset-top: 100px;
+@modal-offset-bottom: 100px; // 超长 modal 距离底部的距离
+@modal-width: 520px;
+@modal-method-width: 420px;
+@modal-method-icon-size: 22px;
+@modal-method-icon-offset: 10px;
+@modal-header-title-padding: 0 30px;
+
+//Spin 加载中
+@spin-small-size: 24px;
+@spin-default-size: 32px;
+@spin-large-size: 40px;
+@spin-blur-opacity: 0.5;
+@spin-blur-filter: 0.8px;
+
+//BackTop 回到顶部
+@back-top-offset-right: 30px;
+@back-top-offset-bottom: 30px;
+@back-top-inner-width: 50px;
+@back-top-inner-height: 50px;
+
+//Progress 进度条
+@planet-progress-height: 10px;
+@planet-progress-stroke-width: 6px;
+@planet-progress-border-radius: 20px;
+@planet-progress-bg-offset: 15px 15px;
+@planet-progress-animate-time: 15s;
+@planet-progress-circle-percent-font-size: 20px;
+
+//Tabs 选项卡
+@tabs-tab-offset: 30px;
+@tabs-tab-padding: 12px 30px;
+@tabs-content-padding: 20px;
+@tabs-card-tab-offset: 2px;
+
+//Badge 徽标数
+@badge-width: 20px;
+@badge-height: 20px;
+@badge-z-index: 99;
+@badge-padding: 0 6px;
+@badge-font-size: 12px;
+@badge-dot-width: 8px;
+
+//Dropdown 下拉菜单
+@planet-dropdown-z-index: 88;
+
+//Drawer 抽屉
+@planet-drawer-z-index: 999;
+@planet-drawer-width: 300px;
+@planet-drawer-height: 300px;
+@planet-drawer-animate-type: 0.3s cubic-bezier(0.9, 0, 0.3, 0.7);
+@planet-drawer-header-title-padding: 0 30px;
+@planet-drawer-header-padding: 5px 10px;
+@planet-drawer-header-height: 40px;
+
+//Radio 单选框
+@planet-radio-width: 14px;
+@planet-radio-height: @planet-radio-width;
+@planet-radio-offset-right: 6px;
+@planet-radio-group-offset-right: 20px;
+
+//Container 包裹容器
+@container-width: 1200px;
+@container-padding: 12px 20px;
+
+//Timeline 时间轴
+@planet-timeline-content-offset: 0 0 0 20px;
+@planet-timeline-line-width: 2px;
+@planet-timeline-dot-width: 10px;
+@planet-timeline-dot-height: 10px;
+
+// Checkbox 复选框
+@planet-checkbox-width: 16px;
+@planet-checkbox-height: @planet-checkbox-width;
+@planet-checkbox-offset-right: 6px;
+@planet-checkbox-group-offset-right: 20px;
+@planet-checkbox-button-padding: 8px 20px;
+@planet-checkbox-button-padding-large: 10px 28px;
+@planet-checkbox-button-padding-small: 5px 10px;
+
+// Switch 开关
+@planet-switch-width: 44px;
+@planet-switch-height: 22px;
+@planet-switch-width-small: 28px;
+@planet-switch-height-small: 16px;
+@planet-switch-width-large: 56px;
+@planet-switch-height-large: 26px;
+@planet-switch-circle-width: 18px;
+@planet-switch-circle-width-small: 12px;
+@planet-switch-circle-width-large: 22px;
+@planet-switch-border-radius: 100px;
+@planet-switch-bg-color:rgba(0, 0, 0, .25);
+@planet-switch-offset: 2px;
+
+//Tag 标签
+@planet-tag-border-radius: 20px;
+@tag-small-height: 30px;
+@tag-large-height: 50px;
+@tag-large-font-size: 16px;
+@tag-small-font-size: 12px;
+@tag-small-padding: 0 5px;
+@tag-large-padding: 2px 20px;
+@tag-default-width: 30px;
+@tag-default-height: 30px;
+@tag-large-width: 45px;
+@tag-large-height: 45px;
+@tag-small-width: 22px;
+@tag-small-height: 22px;
+
+//CityPicker 城市选择框
+@planet-city-picker-width: 400px;
+@planet-city-picker-z-index: 88;
+
+//Select 选择器
+@planet-select-z-index: 99;
+@planet-select-width: 200px;
+
+//DatePicker 日期选择器
+@planet-date-picker-z-index: 88;
+@planet-date-picker-content-height: 470px;
+@planet-date-picker-content-width: 322px;
+@planet-date-picker-content-max-width: 400px;
+@planet-date-picker-date-width: 36px;
+@planet-date-picker-date-height: 36px;
+@planet-date-picker-date-offset: 0 4px 4px 0;
+@planet-date-picker-padding: 15px 20px;
+
+//Breadcrumb 面包屑
+@planet-breadcrumb-offset-bottom: 20px;
+@planet-breadcrumb-padding: 10px 0;
+@planet-breadcrumb-font-color: lighten(@font-color, 50%);
+@planet-breadcrumb-separator-offset: 0 10px;
+@planet-breadcrumb-separator-color: #d9d9d9;
+
+//NumberInput 数字输入框
+@planet-number-input-width: 80px;
+@planet-number-input-width-small: 60px;
+@planet-number-input-width-large: 100px;
+
+//Steps
+@planet-steps-offset-right: 35px;
+@planet-steps-icon-font-size: 40px;
+@planet-steps-icon-offset: 10px;
+@planet-steps-done-title-color: fade(@font-color, 75%);
+@planet-step-offset-top: 10px;
+@planet-step-padding: 20px;
+
+//Collapse
+@collapse-animate-time: 0.3s;
+
+//Upload
+@planet-upload-list-width: 300px;
+@planet-upload-list-cover-width: 50px;
+@planet-upload-list-cover-height: 50px;
+@planet-upload-list-preview-width: 100%;
+@planet-upload-list-preview-height: 300px;
+
+//Calendar
+@planet-calendar-header-height: 60px;
+@planet-calendar-day-header-height: 50px;
+@planet-calendar-header-font-size: 18px;
+@planet-calendar-active-color: fade(@primary-color, 50%);
+@planet-calendar-mini-width: 300px;
+@planet-calendar-item-mini-height: 45px;
+@planet-calendar-day-header-mini-height: 40px;
+@planet-calendar-header-mini-height: 50px;
+
+//Card
+@planet-card-header-font-size: 16px;
+@planet-card-header-padding: 18px 20px;
+@planet-card-title-padding: 10px 20px;
+@planet-card-content-padding: 22px 20px;
+
+//Form
+@planet-form-item-padding-bottom: 35px;
+@planet-form-item-label-padding-right: 10px;
+
+//Empty
+@planet-empty-height: 200px;
+@planet-empty-icon-size: 50px;
+@planet-empty-offset: 12px;
+@planet-empty-icon-height: 55px;
+
+//Avatar
+@planet-avatar-size-base: 32px;
+@planet-avatar-size-lg: 40px;
+@planet-avatar-size-sm: 24px;
+@planet-avatar-font-size-base: 18px;
+@planet-avatar-font-size-lg: 24px;
+@planet-avatar-font-size-sm: 14px;
+@planet-avatar-bg: #ccc;
+@planet-avatar-color: #fff;
+@planet-avatar-border-radius: @border-radius;
+
+//Divider
+@planet-divider-color: @border-color;
+
+//Table
+@planet-table-row-hover-bg-color: fade(@primary-color, 10%);
