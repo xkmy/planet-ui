@@ -25,21 +25,15 @@ import React from 'react'
 import { Button } from 'planet-ui'
 import 'planet-ui/dist/planet-ui.css'
 
-const App = () =>{
+const App = () => {
   return <Button type='primary'>Planet Ui</Button>
 }
-
 ```
 
-2 .按需引入
+2 . CSS 按需引入
+planet-ui 默认支持组件的按需加载,但是 css 仍需要单独配置
 
-```ts
-import Button from 'planet-ui/es/button'
-import 'planet-ui/es/button/index.css'
-```
-
-3 .使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)
-
+- 可使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)
 ```ts
 // .babelrc.js
 module.exports = {
@@ -55,7 +49,11 @@ module.exports = {
     ]
   ]
 }
+```
 
+- 或者直接引入某一个组件的样式
+``` ts
+import 'planet-ui/es/Button/index.css'
 ```
 
 ### Todo:
