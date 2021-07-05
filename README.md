@@ -41,11 +41,11 @@ module.exports = {
     [
       'babel-plugin-import',
       {
-        libraryName: 'planet-ui',
+        libraryName: '@arrebol/planet-ui',
         libraryDirectory: 'es',
         style: true
       },
-      'planet-ui'
+      '@arrebol/planet-ui'
     ]
   ]
 }

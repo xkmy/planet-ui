@@ -5,8 +5,11 @@
   "types": "./dist/index.d.ts",
   "module": "./es/index.js",
   "license": "MIT",
+  "homepage": "https://github.com/xkmy/planet-ui",
   "files": [
-    "lib"
+    "lib",
+    "es",
+    "dist"
   ],
   "scripts": {
     "clean": "rimraf dist lib es",

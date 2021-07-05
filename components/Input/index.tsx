@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect, isValidElement } from 'react'
 import classnames from 'classnames'
 import { CloseCircleIcon } from '../Icon'
 import isEmpty from '../utils/isEmpty'
-import isNotEmpty from '../utils/isNotEmpty'
 
 export type InputSize = 'default' | 'small' | 'large'
 
@@ -59,7 +58,7 @@ const Input: React.FC<Props> = props => {
   const inputRef = useRef<any>()
 
   useEffect(() => {
-    if (isNotEmpty(props.value)) {
+    if (props.value !== undefined) {
       setValue(props.value as React.ReactText)
     }
   }, [props.value])

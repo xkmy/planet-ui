@@ -16,7 +16,6 @@
     "lib": ["DOM", "ESNext", "ES2017"],
     "jsx": "react",
     "baseUrl": "./components",
-    "declarationDir": "dist"
   },
   "include": ["components/**/*"],
   "exclude": ["node_modules", "dist"]

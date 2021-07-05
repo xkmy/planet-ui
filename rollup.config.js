@@ -22,9 +22,7 @@ export default [
       }
     ],
     plugins: [
-      // 支持第三方模块
       resolve(),
-      // 支持 commonjs 格式
       commonjs({ include: /node_modules/ }),
       postcss({
         plugins: [cssnao()],

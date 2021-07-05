@@ -6,7 +6,6 @@ import { DownIcon, LoadingIcon } from '../Icon'
 import debounce from '../utils/debounce'
 import scrollIntoViewIfNeeded from 'scroll-into-view-if-needed'
 import Option from './Option'
-import isNotEmpty from '../utils/isNotEmpty'
 import isEmpty from '../utils/isEmpty'
 import Empty from '../Empty'
 
@@ -58,7 +57,7 @@ const Select: React.FC<SelectProps> = React.memo(props => {
     ...attr
   } = props
 
-  const [selectedValue, setSelectedValue] = useState<React.ReactText>('')
+  const [selectedValue, setSelectedValue] = useState<React.ReactText>(propValue || defaultValue || '')
   const [, setRefresh] = useState({})
 
   const visibleRef = useRef(propVisible)
@@ -74,13 +73,13 @@ const Select: React.FC<SelectProps> = React.memo(props => {
   const wrapper = useRef<any>()
 
   useEffect(() => {
-    if (isNotEmpty(propValue)) {
-      setSelectedValue(propValue as React.ReactText)
+    if (propValue !== undefined) {
+      setSelectedValue(propValue)
       return
     }
 
-    if (isNotEmpty(defaultValue)) {
-      setSelectedValue(defaultValue as React.ReactText)
+    if (defaultValue !== undefined) {
+      setSelectedValue(defaultValue)
       return
     }
   }, [defaultValue, propValue])

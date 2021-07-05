@@ -5,7 +5,6 @@ import Option from '../Select/Option'
 import Button from '../Button'
 import { ArrowLeftIcon, ArrowRightIcon } from '../Icon'
 import NumberInput from '../NumberInput'
-import isNotEmpty from '../utils/isNotEmpty'
 import isEmpty from '../utils/isEmpty'
 
 export type PaginationSize = 'small' | 'default' | 'large'
@@ -61,10 +60,10 @@ const Pagination: React.FC<PaginationProps> = props => {
   const [quickJumperValue, setQuickJumperValue] = useState<string | number>('')
 
   useEffect(() => {
-    if (isNotEmpty(propPage)) {
-      setPage(propPage as number)
+    if (propPage !== undefined) {
+      setPage(propPage)
     }
-    if (isNotEmpty(propPageSize)) {
+    if (propPageSize !== undefined) {
       setPageSize(propPageSize as number)
     }
   }, [propPage, propPageSize])
