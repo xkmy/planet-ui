@@ -1,5 +1,6 @@
 export { default as BackToTop } from './BackToTop'
 export { default as Button } from './Button'
+export { default as Breadcrumb } from './Breadcrumb'
 export { default as Checkbox } from './Checkbox'
 export { default as DatePicker } from './DatePicker'
 export { default as Empty } from './Empty'

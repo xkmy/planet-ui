@@ -1,0 +1,32 @@
+@import '../styles/variables.less';
+
+.planet-breadcrumb {
+  margin-bottom: @planet-breadcrumb-margin-bottom;
+  padding: @planet-breadcrumb-padding;
+  line-height: normal;
+  color: @planet-breadcrumb-font-color;
+
+  > span:last-child {
+    font-weight: bold;
+    color: @font-color;
+
+    .planet-breadcrumb-item-separator {
+      display: none;
+    }
+  }
+
+  &-item-separator {
+    margin: @planet-breadcrumb-separator-offset;
+    color: @planet-breadcrumb-separator-color;
+  }
+
+  &-item-text {
+    a {
+      color: @planet-breadcrumb-font-color;
+      &:hover,
+      &:active {
+        color: @primary-color;
+      }
+    }
+  }
+}
