@@ -1,6 +1,6 @@
 ### Introduction
 
-一个高效,轻量,便捷的 react ui 库,使用 react hooks + typescript ,现已完成 10 多个组件的编写
+一个高效,轻量,便捷的 react ui 库,使用 react hooks + typescript
 
 ### Install
 
@@ -22,8 +22,8 @@ yarn add @arrebol/planet-ui
 
 ```tsx
 import React from 'react'
-import { Button } from 'planet-ui'
-import 'planet-ui/dist/planet-ui.css'
+import { Button } from '@arrebol/planet-ui'
+import '@arrebol/planet-ui/dist/planet-ui.css'
 
 const App = () => {
   return <Button type='primary'>Planet Ui</Button>
@@ -34,6 +34,7 @@ const App = () => {
 planet-ui 默认支持组件的按需加载,但是 css 仍需要单独配置
 
 - 可使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)
+
 ```ts
 // .babelrc.js
 module.exports = {
@@ -52,9 +53,31 @@ module.exports = {
 ```
 
 - 或者直接引入某一个组件的样式
-``` ts
-import 'planet-ui/es/Button/index.css'
+
+```ts
+import '@arrebol/planet-ui/es/Button/index.css'
 ```
+
+### 现有组件
+
+- BackToTop
+- Button
+- Checkbox
+- DatePicker
+- Empty
+- Input
+- Message
+- Notification
+- NumberInput
+- Pagination
+- Progress
+- Select
+- Spin
+- Switch
+- Table
+- Tabs
+- ToolTip
+- TypeWrite
 
 ### Todo:
 
