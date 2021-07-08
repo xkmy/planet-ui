@@ -98,12 +98,14 @@ const Select: React.FC<SelectProps> = React.memo(props => {
   }
 
   useEffect(() => {
-    scrollIntoViewIfNeeded(wrapper.current, {
-      scrollMode: 'if-needed',
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'nearest'
-    })
+    if (visibleRef.current) {
+      scrollIntoViewIfNeeded(wrapper.current, {
+        scrollMode: 'if-needed',
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'nearest'
+      })
+    }
   }, [positionOptions])
 
   const getWrapperBounding = () => {
