@@ -3,37 +3,8 @@ import { useMemo } from 'react'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import Notice from './Notice'
 import classNames from 'classnames'
-
-export type NotificationProps = {
-  key?: string
-  children?: React.ReactNode
-  className?: string
-  darkTheme?: boolean
-  // 秒级
-  duration?: number
-  offset?: number
-  position?: NotificationPosition
-  closable?: boolean
-  type?: NotificationType
-  style?: React.CSSProperties
-  title?: React.ReactNode
-  content?: React.ReactNode
-  onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
-  onClose?: (notice: NotificationProps) => void
-}
-
-type Props = {
-  ref?: Ref<NotificationOption>
-  position: NotificationPosition
-}
-
-export type NotificationPosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'
-export type NotificationType = 'open' | 'info' | 'success' | 'error' | 'warning' | 'loading'
-
-export type NotificationOption = {
-  removeNotice: (key: string) => void
-  addNotice: (notice: NotificationProps) => () => void
-}
+import { TIME_OUT } from '../constants/constants'
+import { NotificationOption, NotificationProps, Props } from './types'
 
 const POSITION_MAP: { [props: string]: string } = {
   'top-left': 'left',
@@ -42,9 +13,7 @@ const POSITION_MAP: { [props: string]: string } = {
   'bottom-right': 'right'
 }
 
-const TIME = 300
-
-const Notification = forwardRef(({ position }: Props, ref: Ref<NotificationOption>) => {
+const Notification = forwardRef(({ position, timeOut }: Props, ref: Ref<NotificationOption>) => {
   const [notices, setNotices] = useState<NotificationProps[]>([])
 
   const getNoticeKey = () => {
@@ -55,7 +24,7 @@ const Notification = forwardRef(({ position }: Props, ref: Ref<NotificationOptio
     setNotices(notices =>
       notices.filter(notice => {
         if (notice.key === key) {
-          if (notice.onClose && autoRunClose) setTimeout(notice.onClose, TIME)
+          if (notice.onClose && autoRunClose) setTimeout(notice.onClose, timeOut || TIME_OUT)
           return false
         }
         return true
@@ -136,7 +105,7 @@ const Notification = forwardRef(({ position }: Props, ref: Ref<NotificationOptio
         <CSSTransition
           key={notice.key}
           classNames={classNames(`planet-notification-${POSITION_MAP[position]}`)}
-          timeout={TIME}
+          timeout={timeOut || TIME_OUT}
         >
           <Notice {...notice} key={notice.key} onClose={() => handleOnClose(notice)} />
         </CSSTransition>

@@ -40,7 +40,7 @@
 
   &-hide {
     pointer-events: none;
-
+    visibility: hidden;
     &.planet-tooltip-position-top {
       animation: planet-slide-down-out @default-transition forwards;
     }
@@ -177,6 +177,6 @@
   }
 
   &-no-animate {
-    visibility: hidden;
+    animation: none;
   }
 }

@@ -1,48 +1,20 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
-import { createPortal, unstable_batchedUpdates } from 'react-dom'
+import { unstable_batchedUpdates } from 'react-dom'
 import scrollIntoViewIfNeeded from 'scroll-into-view-if-needed'
 import classnames from 'classnames'
 import debounce from '../utils/debounce'
 import { useClickOther } from '../hooks'
-
-export const TooltipPortal = ({
-  children,
-  getPopupContainer,
-  onChange
-}: {
-  children: React.ReactNode
-  getPopupContainer: () => HTMLElement
-  onChange: () => void
-}) => {
-  const elRef = useRef(document.createElement('div'))
-
-  const containerRef = useRef<HTMLElement | null>(null)
-
-  useEffect(() => {
-    const element = elRef.current
-
-    containerRef.current = getPopupContainer()
-    containerRef.current.appendChild(element)
-
-    if (onChange) onChange()
-
-    return () => {
-      containerRef.current && containerRef.current.removeChild(element)
-    }
-    // eslint-disable-next-line
-  }, [])
-
-  return createPortal(children, elRef.current)
-}
-
-export type TooltipThemes = 'dark' | 'light'
+import TooltipPortal from './ToolTipPortal'
+import { CSSTransition } from 'react-transition-group'
+import { Placements, Theme, Trigger } from 'types/types'
+import { TIME_OUT } from '../constants/constants'
 
 type Props = {
   className?: string
-  position?: 'top' | 'right' | 'left' | 'bottom'
-  title?: string
-  trigger?: 'hover' | 'click'
-  theme?: TooltipThemes
+  position?: Placements
+  title?: React.ReactNode
+  trigger?: Trigger
+  theme?: Theme
   hiddenArrow?: boolean
   disabled?: boolean
   visible?: boolean
@@ -71,8 +43,7 @@ const ToolTip: React.FC<Props> = props => {
 
   const closeTimeDelay = 100
 
-  const [visible, setVisible] = useState<boolean | null>(null)
-
+  const [visible, setVisible] = useState<boolean | null>(propVisible || null)
   const [positionInfo, setPositionInfo] = useState({
     left: 0,
     top: 0
@@ -129,9 +100,9 @@ const ToolTip: React.FC<Props> = props => {
   }, [propVisible, setWrapperBounding])
 
   const onOpenTooltip = () => {
-    if (propVisible) {
-      return
-    }
+    // if (propVisible) {
+    //   return
+    // }
 
     if (closeTimer.current) {
       clearTimeout(closeTimer.current)
@@ -152,9 +123,9 @@ const ToolTip: React.FC<Props> = props => {
   }
 
   const onCloseTooltip = () => {
-    if (propVisible) {
-      return
-    }
+    // if (propVisible) {
+    //   return
+    // }
 
     closeTimer.current = setTimeout(() => {
       unstable_batchedUpdates(() => {
@@ -165,9 +136,9 @@ const ToolTip: React.FC<Props> = props => {
   }
 
   const toggleShowToolTip = () => {
-    if (propVisible) {
-      return
-    }
+    // if (propVisible) {
+    //   return
+    // }
 
     // 将要显示 tooltip
     if (!visible) {
@@ -200,9 +171,9 @@ const ToolTip: React.FC<Props> = props => {
   }, [setWrapperBounding])
 
   useClickOther(toggleContainer, e => {
-    if (propVisible) {
-      return
-    }
+    // if (propVisible) {
+    //   return
+    // }
 
     if (visible && wrapperRef.current && !wrapperRef.current.contains(e.target as any)) {
       setVisible(false)
@@ -229,29 +200,30 @@ const ToolTip: React.FC<Props> = props => {
       {...bindTriggerEvents}
     >
       <TooltipPortal onChange={onTooltipPortalChange} getPopupContainer={getPopupContainer}>
-        <div
-          className={classnames(
-            'planet-tooltip-wrapper',
-            `planet-tooltip-position-${position}`,
-            `planet-tooltip-${theme}`,
-            wrapperClassName,
-            {
-              'planet-tooltip-show': visible,
-              'planet-tooltip-hide': !visible,
-              'planet-tooltip-hidden-arrow': hiddenArrow,
-              'planet-tooltip-no-animate': visible === null // 第一次时隐藏
-            }
-          )}
-          style={{
-            left: positionInfo.left,
-            top: positionInfo.top
-          }}
-          ref={wrapperRef}
-          onMouseEnter={isHover ? onOpenTooltip : undefined}
-          onMouseLeave={isHover ? onCloseTooltip : undefined}
-        >
-          {title}
-        </div>
+        <CSSTransition classNames='planet-tooltip' timeout={TIME_OUT}>
+          <div
+            className={classnames(
+              'planet-tooltip-wrapper',
+              `planet-tooltip-position-${position}`,
+              `planet-tooltip-${theme}`,
+              wrapperClassName,
+              {
+                'planet-tooltip-show': visible,
+                'planet-tooltip-hide': !visible,
+                'planet-tooltip-hidden-arrow': hiddenArrow
+              }
+            )}
+            style={{
+              left: positionInfo.left,
+              top: positionInfo.top
+            }}
+            ref={wrapperRef}
+            onMouseEnter={isHover ? onOpenTooltip : undefined}
+            onMouseLeave={isHover ? onCloseTooltip : undefined}
+          >
+            {title}
+          </div>
+        </CSSTransition>
       </TooltipPortal>
       <span onClick={toggleShowToolTip} ref={triggerWrapper} className='planet-tooltip-trigger-wrapper'>
         {children}

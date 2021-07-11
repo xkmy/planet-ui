@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import { CloseIcon, ErrorIcon, InfoIcon, LoadingIcon, SuccessIcon, WarningIcon } from '../Icon'
-import { NotificationProps } from './Notification'
+import { NotificationProps } from './types'
 
 export type Position = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'
 

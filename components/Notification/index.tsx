@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
-import Notification, { NotificationPosition, NotificationProps } from './Notification'
+import Notification from './Notification'
+import { NotificationPosition, NotificationProps } from './types'
 
 // 创建一份 notification 元素
 const createNotification = (position: NotificationPosition) => {
-  console.log('createNotification')
   const div = document.createElement('div')
   document.body.appendChild(div)
   const ref: any = React.createRef()
