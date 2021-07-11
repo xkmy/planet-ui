@@ -1,6 +1,6 @@
 ### Introduction
 
-一个高效,轻量,便捷的 react ui 库,使用 react hooks + typescript
+一个 react ui 库,使用 react hooks + typescript
 
 ### Install
 
@@ -71,6 +71,7 @@ import '@arrebol/planet-ui/es/Button/index.css'
 - NumberInput
 - Pagination
 - Progress
+- Popover
 - Select
 - Spin
 - Switch
@@ -81,5 +82,4 @@ import '@arrebol/planet-ui/es/Button/index.css'
 
 ### Todo:
 
-- 剩余组件的编写
 - 文档编写
