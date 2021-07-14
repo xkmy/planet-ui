@@ -8,6 +8,7 @@ import TooltipPortal from './ToolTipPortal'
 import { CSSTransition } from 'react-transition-group'
 import { Placements, Theme, Trigger } from 'types/types'
 import { TIME_OUT } from '../constants/constants'
+import useToolTip from './useToolTip'
 
 type Props = {
   className?: string
@@ -44,51 +45,27 @@ const ToolTip: React.FC<Props> = props => {
   const closeTimeDelay = 100
 
   const [visible, setVisible] = useState<boolean | null>(propVisible || null)
-  const [positionInfo, setPositionInfo] = useState({
-    left: 0,
-    top: 0
-  })
+  // const [positionInfo, setPositionInfo] = useState({
+  //   left: 0,
+  //   top: 0
+  // })
 
-  const wrapperRef = useRef<HTMLDivElement | null>(null)
-  const triggerWrapper = useRef<HTMLDivElement | null>(null)
+  // const wrapperRef = useRef<HTMLDivElement | null>(null)
+  // const triggerWrapper = useRef<HTMLDivElement | null>(null)
   const toggleContainer = useRef<HTMLDivElement | null>(null)
   const closeTimer = useRef<NodeJS.Timeout | null>(null)
 
-  const getWrapperBounding = useCallback(() => {
-    if (!triggerWrapper.current || !wrapperRef.current) return
-    const { width, height, top, left } = triggerWrapper.current.getBoundingClientRect()
-    const { height: wrapperHeight, width: wrapperWidth } = wrapperRef.current.getBoundingClientRect()
+  const { wrapperRef, triggerWrapper, positionInfo, setWrapperBounding } = useToolTip({
+    position
+  })
 
-    const { scrollX, scrollY } = window
-
-    const positions = {
-      top: {
-        top: top + scrollY - wrapperHeight + 8,
-        left: left + scrollX + width / 2 - wrapperWidth / 2
-      },
-      bottom: {
-        top: top + height + scrollY,
-        left: left + scrollX + width / 2 - wrapperWidth / 2
-      },
-      left: {
-        top: top + scrollY + height / 2 - wrapperHeight / 2,
-        left: left + scrollX - wrapperWidth
-      },
-      right: {
-        top: top + scrollY + height / 2 - wrapperHeight / 2,
-        left: left + scrollX + width
-      }
-    }
-    return positions[position]
-  }, [position])
-
-  const setWrapperBounding = useCallback(() => {
-    const positions = getWrapperBounding()
-    if (positions) {
-      const { left, top } = positions
-      setPositionInfo(positionInfo => ({ ...positionInfo, left, top }))
-    }
-  }, [getWrapperBounding])
+  // const setWrapperBounding = useCallback(() => {
+  //   const positions = getWrapperBounding(triggerWrapper.current, wrapperRef.current)
+  //   if (positions) {
+  //     const { left, top } = positions
+  //     setPositionInfo(positionInfo => ({ ...positionInfo, left, top }))
+  //   }
+  // }, [getWrapperBounding])
 
   useEffect(() => {
     if (propVisible !== undefined) {
@@ -100,10 +77,6 @@ const ToolTip: React.FC<Props> = props => {
   }, [propVisible, setWrapperBounding])
 
   const onOpenTooltip = () => {
-    // if (propVisible) {
-    //   return
-    // }
-
     if (closeTimer.current) {
       clearTimeout(closeTimer.current)
     }
@@ -123,10 +96,6 @@ const ToolTip: React.FC<Props> = props => {
   }
 
   const onCloseTooltip = () => {
-    // if (propVisible) {
-    //   return
-    // }
-
     closeTimer.current = setTimeout(() => {
       unstable_batchedUpdates(() => {
         setVisible(false)
@@ -136,10 +105,6 @@ const ToolTip: React.FC<Props> = props => {
   }
 
   const toggleShowToolTip = () => {
-    // if (propVisible) {
-    //   return
-    // }
-
     // 将要显示 tooltip
     if (!visible) {
       setWrapperBounding()
@@ -158,23 +123,19 @@ const ToolTip: React.FC<Props> = props => {
     }
   }, [visible, setWrapperBounding])
 
-  useEffect(() => {
-    const onResizeHandler = debounce(() => {
-      setWrapperBounding()
-    }, 500)
+  // useEffect(() => {
+  //   const onResizeHandler = debounce(() => {
+  //     setWrapperBounding()
+  //   }, 500)
 
-    window.addEventListener('resize', onResizeHandler)
+  //   window.addEventListener('resize', onResizeHandler)
 
-    return () => {
-      window.removeEventListener('resize', onResizeHandler)
-    }
-  }, [setWrapperBounding])
+  //   return () => {
+  //     window.removeEventListener('resize', onResizeHandler)
+  //   }
+  // }, [setWrapperBounding])
 
   useClickOther(toggleContainer, e => {
-    // if (propVisible) {
-    //   return
-    // }
-
     if (visible && wrapperRef.current && !wrapperRef.current.contains(e.target as any)) {
       setVisible(false)
       onVisibleChange && onVisibleChange(false)

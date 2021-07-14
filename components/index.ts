@@ -1,3 +1,4 @@
+export { default as Alert } from './Alert'
 export { default as BackToTop } from './BackToTop'
 export { default as Button } from './Button'
 export { default as Breadcrumb } from './Breadcrumb'

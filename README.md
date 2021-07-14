@@ -60,6 +60,7 @@ import '@arrebol/planet-ui/es/Button/index.css'
 
 ### 现有组件
 
+- Alert
 - BackToTop
 - Button
 - Checkbox

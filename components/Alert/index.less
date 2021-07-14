@@ -1,0 +1,74 @@
+@import '../styles/style.less';
+
+.planet-alert {
+  padding: @alert-padding;
+  border: 1px solid @border-color;
+  border-radius: @border-radius;
+  font-size: @font-size;
+  color: @font-color;
+  line-height: 1.5;
+  position: relative;
+  list-style: none;
+  box-shadow: @default-section-shadow;
+
+  &-icon {
+    margin: @alert-icon-margin;
+    svg {
+      vertical-align: middle;
+      margin-top: -3px;
+    }
+  }
+  &.planet-alert-hide {
+    animation: planet-hide @default-transition forwards;
+  }
+
+  &-close {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: @font-size;
+    cursor: pointer;
+  }
+
+  &.has-description {
+    .planet-alert-message {
+      font-weight: bold;
+      font-size: @alert-message-font-size;
+      margin: @alert-message-margin;
+    }
+  }
+
+  &-description {
+    line-height: 22px;
+    font-size: @font-size;
+  }
+
+  &-success {
+    .add-alert-style(@success-color);
+    .planet-alert-icon {
+      color: @success-color;
+    }
+  }
+
+  &-info {
+    .add-alert-style(@info-color);
+    .planet-alert-icon {
+      color: @info-color;
+    }
+  }
+
+  &-error {
+    .add-alert-style(@error-color);
+    .planet-alert-icon {
+      color: @error-color;
+    }
+  }
+
+  &-warning {
+    .add-alert-style(@warning-color);
+    .planet-alert-icon {
+      color: @warning-color;
+    }
+  }
+}
