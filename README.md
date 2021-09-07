@@ -2,6 +2,9 @@
 
 一个 react ui 库,使用 react hooks + typescript
 
+### Online demo
+https://codesandbox.io/s/planet-ui-p33ym?file=/src/App.js
+
 ### Install
 
 > 使用 npm
