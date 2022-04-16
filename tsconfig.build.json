@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "declarationDir": "lib",
+    "emitDeclarationOnly": true
+  },
+  "exclude": ["**/__tests__/**", "**/demo/**", "node_modules", "lib", "es"]
+}

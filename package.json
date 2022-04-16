@@ -2,7 +2,7 @@
   "name": "@arrebol/planet-ui",
   "version": "1.1.4",
   "main": "./lib/index.js",
-  "types": "./dist/index.d.ts",
+  "types": "./lib/index.d.ts",
   "module": "./es/index.js",
   "license": "MIT",
   "homepage": "https://github.com/xkmy/planet-ui",
@@ -14,9 +14,10 @@
   "scripts": {
     "clean": "rimraf dist lib es",
     "build:css": "gulp",
-    "build": "yarn clean && yarn build:lib && yarn build:es && rollup -c && yarn build:css",
     "build:es": "babel --extensions \".js,.ts,.tsx\" components --out-dir ./es",
-    "build:lib": "cross-env OUTPUT_MODULE=commonjs babel --extensions \".js,.ts,.tsx\" components --out-dir ./lib"
+    "build:lib": "cross-env OUTPUT_MODULE=commonjs babel --extensions \".js,.ts,.tsx\" components --out-dir ./lib",
+    "build:types": "tsc -p tsconfig.build.json && cpr lib es",
+    "build": "yarn clean && yarn build:types && yarn build:lib && yarn build:es && rollup -c && yarn build:css"
   },
   "author": "xkmy",
   "keywords": [
@@ -50,6 +51,7 @@
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
     "babel-loader": "^8.2.2",
+    "cpr": "^3.0.1",
     "cross-env": "^7.0.3",
     "cssnano": "^5.0.6",
     "eslint": "^7.20.0",
@@ -76,8 +78,8 @@
   "dependencies": {
     "classnames": "^2.3.1",
     "dayjs": "^1.10.4",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
     "react-icons": "3.3.0",
     "react-transition-group": "^4.4.2",
     "scroll-into-view-if-needed": "^2.2.28"
