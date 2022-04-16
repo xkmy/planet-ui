@@ -1,0 +1,55 @@
+.planet-skeleton,
+.planet-skeleton * {
+  color: transparent;
+}
+
+.planet-skeleton {
+  p,
+  div,
+  img,
+  span,
+  time,
+  button,
+  header,
+  footer,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    animation: planet-skeleton 1s infinite;
+    animation-timing-function: linear;
+    background-color: #f6f7f8;
+    background-image: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.07) 8%,
+      rgba(0, 0, 0, 0.13) 18%,
+      rgba(0, 0, 0, 0.07) 33%
+    );
+    background-size: 200% 100px;
+    background-attachment: fixed;
+    border: none;
+    border-radius: 4px;
+    color: transparent;
+    object-position: -99999px 99999px;
+  }
+
+  & *:nth-child(3n-2) {
+    animation-delay: 0.1s;
+  }
+
+  & *:nth-child(3n-1) {
+    animation-delay: 0.2s;
+  }
+}
+
+@keyframes planet-skeleton {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+  }
+}
