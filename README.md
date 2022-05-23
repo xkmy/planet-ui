@@ -83,6 +83,8 @@ import '@arrebol/planet-ui/es/Button/index.css'
 - Tabs
 - ToolTip
 - TypeWrite
+- ErrorBoundary
+- Highlight
 
 ### Todo:
 
