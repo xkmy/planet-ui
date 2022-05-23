@@ -84,8 +84,8 @@
   "dependencies": {
     "classnames": "^2.3.1",
     "dayjs": "^1.10.4",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
     "react-icons": "3.3.0",
     "react-transition-group": "^4.4.2",
     "scroll-into-view-if-needed": "^2.2.28"
