@@ -2,7 +2,7 @@ import React from 'react'
 import { EmptyIcon } from '../Icon'
 import classNames from 'classnames'
 
-type Props = {
+export type EmptyProps = {
   className?: string
   height?: number
   description?: React.ReactNode
@@ -10,7 +10,7 @@ type Props = {
   icon?: React.ReactNode
 }
 
-const Empty: React.FC<Props> = props => {
+const Empty: React.FC<EmptyProps> = props => {
   const { className, children, description = '暂无数据', height = 200, icon = <EmptyIcon /> } = props
 
   return (

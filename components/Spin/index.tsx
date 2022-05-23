@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { LoadingIcon } from '../Icon'
 
-type Props = {
+export type SpinProps = {
   className?: string
   size?: 'small' | 'large'
   tip?: string
@@ -11,7 +11,7 @@ type Props = {
   children?: React.ReactNode
 }
 
-const Spin: React.FC<Props> = props => {
+const Spin: React.FC<SpinProps> = props => {
   const { loading = true, className, size = '', tip, children, indicator = <LoadingIcon /> } = props
 
   if (!loading) {

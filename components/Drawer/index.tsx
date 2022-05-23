@@ -5,7 +5,7 @@ import { CloseIcon } from '../Icon'
 import useBodyScroll from '../hooks/useBodyScroll'
 import { Placements } from '../types/types'
 
-export type Props = {
+export type DrawerProps = {
   title?: React.ReactNode
   content?: React.ReactNode
   className?: string
@@ -26,7 +26,7 @@ export type Props = {
   onClose?: () => void
 }
 
-const Drawer: React.FC<Props> = React.memo(
+const Drawer: React.FC<DrawerProps> = React.memo(
   ({
     title,
     visible: propVisible,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { FallbackElement, FallbackProps, FallbackRender } from './types'
 
-type Props = {
+export type ErrorBoundaryProps = {
   /**
    * 出错时渲染的元素,和 fallbackRender , FallbackComponent 三选一即可
    */
@@ -29,7 +29,7 @@ type State = {
   error: Error | null
 }
 
-class ErrorBoundary extends React.Component<Props, State> {
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, State> {
   state: State = { error: null }
   updatedWithError = false
 
@@ -84,7 +84,7 @@ class ErrorBoundary extends React.Component<Props, State> {
 
 function withErrorBoundary<P>(
   Component: React.ComponentType<P>,
-  errorBoundaryProps: Props
+  errorBoundaryProps: ErrorBoundaryProps
 ): React.ComponentType<P> {
   const Wrapped: React.ComponentType<P> = props => {
     return (

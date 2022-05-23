@@ -4,7 +4,7 @@ import { trim } from '../utils'
 
 type Color = 'white' | 'red' | 'blue' | 'green' | 'gray' | 'orange' | 'purple' | 'magenta' | 'lime'
 
-type Props = {
+export type HighlightProps = {
   /**
    * 要高亮的关键词
    */
@@ -33,7 +33,14 @@ type Props = {
   children: string
 }
 
-const Highlight: React.FC<Props> = ({ keywords, children, color, backgroundColor, className, style }) => {
+const Highlight: React.FC<HighlightProps> = ({
+  keywords,
+  children,
+  color,
+  backgroundColor,
+  className,
+  style
+}) => {
   const highlighters = useMemo(() => createHighlighters(children, keywords), [children, keywords])
 
   const getClassnames = () => {

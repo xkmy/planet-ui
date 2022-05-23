@@ -330,4 +330,6 @@ const DatePicker: React.FC<DatePickerProps> = props => {
   )
 }
 
+export * from './types'
+
 export default React.memo(DatePicker)
