@@ -15,7 +15,7 @@ export type HighlightProps = {
    */
   color?: Color
 
-  className?: string
+  className?: string | Record<string, string>
 
   /**
    * 自定义样式
@@ -36,18 +36,22 @@ export type HighlightProps = {
 const Highlight: React.FC<HighlightProps> = ({
   keywords,
   children,
-  color,
+  color = 'red',
   backgroundColor,
   className,
   style
 }) => {
   const highlighters = useMemo(() => createHighlighters(children, keywords), [children, keywords])
 
-  const getClassnames = () => {
+  const getClassnames = (v: string) => {
+    let name = className || ''
+
+    if (typeof className === 'object') name = className[v]
+
     return trim(
       `${backgroundColor ? `planet-highlight-bg-${backgroundColor}` : ''} ${
         color ? `planet-highlight-color-${color}` : ''
-      } ${className || ''}`
+      } ${name}`
     )
   }
 
@@ -55,7 +59,7 @@ const Highlight: React.FC<HighlightProps> = ({
     <>
       {highlighters.map((v, i) =>
         v.highlighted ? (
-          <span className={getClassnames()} key={i} style={style}>
+          <span className={getClassnames(v.chunk)} key={i} style={style}>
             {v.chunk}
           </span>
         ) : (
