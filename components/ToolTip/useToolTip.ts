@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
-import { Placements } from 'types/types'
+import { Placements } from '../types/types'
 import debounce from '../utils/debounce'
 
 type InitState = {

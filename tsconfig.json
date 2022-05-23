@@ -12,7 +12,7 @@
     "module": "esnext",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "declaration": true,
+    "declaration": false,
     "lib": ["DOM", "ESNext", "ES2017"],
     "jsx": "react",
     "baseUrl": "./components",

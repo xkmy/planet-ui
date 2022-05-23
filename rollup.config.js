@@ -31,7 +31,8 @@ export default [
       }),
       babel({
         exclude: '/node_modules/**',
-        runtimeHelpers: true // 使plugin-transform-runtime生效
+        babelHelpers: 'runtime',
+        plugins: ['@babel/plugin-transform-runtime']
       }),
       typescript({
         tsconfig: './tsconfig.json'

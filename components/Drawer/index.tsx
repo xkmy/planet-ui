@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import cls from 'classnames'
 import { CloseIcon } from '../Icon'
 import useBodyScroll from '../hooks/useBodyScroll'
-import { Placements } from 'types/types'
+import { Placements } from '../types/types'
 
 export type Props = {
   title?: React.ReactNode

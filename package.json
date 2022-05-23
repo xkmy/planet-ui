@@ -1,22 +1,29 @@
 {
   "name": "@arrebol/planet-ui",
   "version": "1.1.5",
-  "main": "./lib/index.js",
-  "types": "./dist/index.d.ts",
-  "module": "./es/index.js",
   "license": "MIT",
   "homepage": "https://github.com/xkmy/planet-ui",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "module": "./es/index.js",
   "files": [
     "lib",
     "es",
     "dist"
   ],
+  "sideEffects": [
+    "dist/*",
+    "es/*",
+    "lib/*",
+    "*.less"
+  ],
   "scripts": {
     "clean": "rimraf dist lib es",
     "build:css": "gulp",
-    "build": "yarn clean && yarn build:lib && yarn build:es && rollup -c && yarn build:css",
+    "build:types": "tsc -p tsconfig.types.json && cpr lib es",
     "build:es": "babel --extensions \".js,.ts,.tsx\" components --out-dir ./es",
-    "build:lib": "cross-env OUTPUT_MODULE=commonjs babel --extensions \".js,.ts,.tsx\" components --out-dir ./lib"
+    "build:lib": "cross-env OUTPUT_MODULE=commonjs babel --extensions \".js,.ts,.tsx\" components --out-dir ./lib",
+    "build": "yarn clean && yarn build:types && yarn build:lib && yarn build:es && rollup -c && yarn build:css"
   },
   "author": "xkmy",
   "keywords": [
@@ -50,6 +57,7 @@
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
     "babel-loader": "^8.2.2",
+    "cpr": "^3.0.1",
     "cross-env": "^7.0.3",
     "cssnano": "^5.0.6",
     "eslint": "^7.20.0",

@@ -56,4 +56,8 @@ gulp.task('buildCss', () => {
     .pipe(gulp.dest(DIR.dist))
 })
 
-gulp.task('default', gulp.series(['copyLess', 'copyCss', 'buildCss']))
+gulp.task('buildLess', () => {
+  return gulp.src(DIR.buildSrc).pipe(concat('planet-ui.less')).pipe(size()).pipe(gulp.dest(DIR.dist))
+})
+
+gulp.task('default', gulp.series(['copyLess', 'copyCss', 'buildCss', 'buildLess']))

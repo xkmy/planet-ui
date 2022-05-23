@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declarationDir": "lib",
+    "typeRoots": ["node_modules/@types"],
+    "declaration":true,
+    "emitDeclarationOnly": true // 只生成声明文件
+  }
+}

@@ -2,15 +2,14 @@ import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { unstable_batchedUpdates } from 'react-dom'
 import scrollIntoViewIfNeeded from 'scroll-into-view-if-needed'
 import classnames from 'classnames'
-import debounce from '../utils/debounce'
 import { useClickOther } from '../hooks'
 import TooltipPortal from './ToolTipPortal'
 import { CSSTransition } from 'react-transition-group'
-import { Placements, Theme, Trigger } from 'types/types'
+import { Placements, Theme, Trigger } from '../types/types'
 import { TIME_OUT } from '../constants/constants'
 import useToolTip from './useToolTip'
 
-type Props = {
+export type ToolTipProps = {
   className?: string
   position?: Placements
   title?: React.ReactNode
@@ -25,7 +24,7 @@ type Props = {
   getPopupContainer?: () => HTMLElement
 }
 
-const ToolTip: React.FC<Props> = props => {
+const ToolTip: React.FC<ToolTipProps> = props => {
   const {
     className,
     visible: propVisible,
